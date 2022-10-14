@@ -28,11 +28,13 @@ extension MenuCollectionView {
             layoutSize: .init(widthDimension: .fractionalWidth(1.0),
                               heightDimension: .fractionalHeight(1.0)))
         item.contentInsets.leading = 16
+        item.contentInsets.trailing = 16
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: .init(widthDimension: .fractionalWidth(0.85),
                               heightDimension: .fractionalHeight(0.20)),
             subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets.top = 16
         section.orthogonalScrollingBehavior = .groupPaging
         return section
     }

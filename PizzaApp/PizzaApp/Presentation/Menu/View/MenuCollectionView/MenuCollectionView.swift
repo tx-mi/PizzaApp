@@ -41,6 +41,8 @@ extension MenuCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 2 {
             return 5
+        } else if section == 0 {
+            return 2
         }
         return 4
     }
@@ -64,6 +66,8 @@ extension MenuCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
         return 3
     }
     
+    
+
 }
 
 // MARK: - Setup cells and suplemetaryVies
@@ -74,8 +78,14 @@ private extension MenuCollectionView {
         guard let cell = dequeueReusableCell(withReuseIdentifier: BannerCell.reuseID,
                                              for: indexPath) as? BannerCell
         else { return UICollectionViewCell() }
-        cell.backgroundColor = .red
-        cell.layer.cornerRadius = 10
+        
+        switch indexPath.row {
+        case 0:
+            cell.configure(image: UIImage(named: "pizzaSaleBanner"))
+        default:
+            cell.configure(image: UIImage(named: "burgerSaleBanner"))
+        }
+        
         return cell
     }
     
