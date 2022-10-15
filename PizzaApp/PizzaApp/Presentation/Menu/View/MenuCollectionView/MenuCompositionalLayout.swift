@@ -15,10 +15,8 @@ extension MenuCollectionView {
             switch sectionIndex {
             case 0:
                 return createBannerLayout()
-            case 1:
-                return createFilterLayout()
             default:
-                return createProductLayout()
+                return createProductLayout(sectionIndex: sectionIndex)
             }
         }
     }
@@ -39,27 +37,7 @@ extension MenuCollectionView {
         return section
     }
     
-    static func createFilterLayout() -> NSCollectionLayoutSection? {
-        let item = NSCollectionLayoutItem(
-            layoutSize: .init(widthDimension: .fractionalWidth(1.0),
-                              heightDimension: .fractionalHeight(1.0)))
-        item.contentInsets.leading = 16
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: .init(widthDimension: .fractionalWidth(0.28),
-                              heightDimension: .estimated(38)),
-            subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(
-            top: 16,
-            leading: 0,
-            bottom: 16,
-            trailing: 0
-        )
-        return section
-    }
-    
-    static func createProductLayout() -> NSCollectionLayoutSection? {
+    static func createProductLayout(sectionIndex: Int) -> NSCollectionLayoutSection? {
         let item = NSCollectionLayoutItem(
             layoutSize: .init(widthDimension: .fractionalWidth(1.0),
                               heightDimension: .fractionalHeight(1.0)))
@@ -69,6 +47,18 @@ extension MenuCollectionView {
                               heightDimension: .fractionalHeight(0.25)),
             subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        if sectionIndex == 1 {
+            let header = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: .init(widthDimension: .fractionalWidth(1.0),
+                                  heightDimension: .fractionalHeight(0.07)),
+                elementKind: FiltersView.kind,
+                alignment: .top
+            )
+            header.pinToVisibleBounds = true
+            section.boundarySupplementaryItems = [
+                header
+            ]
+        }
         section.orthogonalScrollingBehavior = .none
         return section
     }
