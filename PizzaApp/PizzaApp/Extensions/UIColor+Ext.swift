@@ -10,6 +10,7 @@ import UIKit
 extension UIColor {
     static let darkWhite = UIColor(hex: 0xF3F5F9)
     static let transparentPink = UIColor(hex: 0xFD3A69, alpha: 0.2)
+    static let darkPink = UIColor(hex: 0xFD3A69)
     
     convenience init(hex: Int, alpha: CGFloat = 1) {
         let red = (hex >> 16) & 0xFF
