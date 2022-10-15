@@ -7,7 +7,6 @@
 
 import UIKit
 
-typealias Products = [Int:[Product]]
 
 protocol MenuViewModelProtocol {
     var products: Products { get }

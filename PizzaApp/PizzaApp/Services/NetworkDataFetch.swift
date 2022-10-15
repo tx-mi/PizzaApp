@@ -11,7 +11,7 @@ import Foundation
 
 protocol NetworkDataFetchProtocol {
     
-    func fetchProducts(completion: @escaping ([Int:[Product]]?) -> Void)
+    func fetchProducts(completion: @escaping (Products?) -> Void)
     
 }
 
@@ -19,7 +19,7 @@ final class NetworkDataFetch: NetworkDataFetchProtocol {
     
     private var networkService = NetworkService()
     
-    func fetchProducts(completion: @escaping ([Int:[Product]]?) -> Void) {
+    func fetchProducts(completion: @escaping (Products?) -> Void) {
         var products = [Int:[Product]]()
         var i = 0
         let group = DispatchGroup()

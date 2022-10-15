@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias Products = [Int:[Product]]
+
 struct Product: Codable {
     let id: String
     let img: String

@@ -15,7 +15,6 @@ final class MenuVC: UIViewController {
         return collectionView
     }()
     
-    
     private let viewModel: MenuViewModelProtocol
 
     init(viewModel: MenuViewModelProtocol) {
