@@ -11,7 +11,7 @@ class BannerCell: UICollectionViewCell {
     
     static let reuseID = "BannerCellID"
     
-    lazy var bannerImageView: UIImageView = {
+    private lazy var bannerImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .red
         imageView.contentMode = .scaleAspectFill
@@ -33,11 +33,6 @@ class BannerCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        layer.shadowColor = UIColor.white.cgColor
-//        layer.shadowOpacity = 1
-//        layer.shadowOffset = .zero
-//        layer.shadowRadius = 10
-//        layer.cornerRadius = 10
     }
     
     override func prepareForReuse() {
