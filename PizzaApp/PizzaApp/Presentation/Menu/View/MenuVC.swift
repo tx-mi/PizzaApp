@@ -7,13 +7,14 @@
 
 import UIKit
 
-class MenuVC: UIViewController {
+final class MenuVC: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+    
     
     private let viewModel: MenuViewModelProtocol
 

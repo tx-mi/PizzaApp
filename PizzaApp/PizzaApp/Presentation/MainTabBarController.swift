@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +15,7 @@ class MainTabBarController: UITabBarController {
         tabBar.barTintColor = .white
         tabBar.tintColor = .red
         
-        let menuViewModel = MenuViewModel()
+        let menuViewModel = MenuViewModel(network: NetworkDataFetch(), navController: nil)
         let menuVC = MenuVC(viewModel: menuViewModel)
         
         let contatsVC = UIViewController()
