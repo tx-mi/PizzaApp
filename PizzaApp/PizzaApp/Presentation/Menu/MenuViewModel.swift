@@ -40,6 +40,7 @@ final class MenuViewModel: MenuViewModelProtocol {
     }
     
     func getAllProducts() {
+        guard products.count == 0 else { didUpdatesProducts?(products); return }
         return network.fetchProducts { [weak self] products in
             guard let products,
                   let self

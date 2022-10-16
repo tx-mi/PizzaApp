@@ -26,6 +26,11 @@ final class MenuVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getAllProducts()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

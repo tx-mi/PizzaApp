@@ -25,7 +25,6 @@ final class MenuCollectionView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: MenuCollectionView.configureLayout())
         
         registerCells()
-        self.viewModel.getAllProducts()
         self.viewModel.didUpdatesProducts = { [weak self] Products in
             self?.reloadData()
         }
