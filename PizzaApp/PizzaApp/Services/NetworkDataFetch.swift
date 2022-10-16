@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 protocol NetworkDataFetchProtocol {
     
     func fetchProducts(completion: @escaping (Products?) -> Void)
@@ -36,6 +34,7 @@ final class NetworkDataFetch: NetworkDataFetchProtocol {
                 case .some(.failure(_)):
                     print("failure")
                 }
+                print(i, category.path)
                 products[i] = Array(newProducts.prefix(10))
                 i += 1
                 group.leave()

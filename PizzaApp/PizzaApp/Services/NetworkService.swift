@@ -13,11 +13,14 @@ protocol NetworkServiceProtocol {
 
 final class NetworkService: NetworkServiceProtocol {
         
+    let lock = NSLock()
+    
     func request(searchTerm: String, completion: @escaping (Result<Data, Error>?) -> Void) {
         let url = self.url(searchTerm: searchTerm)
         var request = URLRequest(url: url)
         request.httpMethod = "get"
         let task = createDataTask(with: request, completion: completion)
+        lock.lock()
         task.resume()
     }
 
@@ -31,7 +34,8 @@ final class NetworkService: NetworkServiceProtocol {
     
     
     private func createDataTask(with request: URLRequest, completion: @escaping (Result<Data, Error>?) -> Void) -> URLSessionDataTask {
-        return URLSession.shared.dataTask(with: request) { (data, response, error) in
+        return URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+            self?.lock.unlock()
             DispatchQueue.main.async {
                 // Check for Error
                 if let error = error {
