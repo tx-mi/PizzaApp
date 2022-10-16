@@ -12,6 +12,12 @@ class ProductCell: UICollectionViewCell {
     
     static let reuseID = "ProductCellID"
     
+    override open var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? UIColor.darkWhite: UIColor.white
+        }
+    }
+    
     var photoUrl: String? {
             didSet {
                 guard let imageUrl = photoUrl,
@@ -52,7 +58,7 @@ class ProductCell: UICollectionViewCell {
         let button = UIButton()
         button.setTitle("от 345 р", for: .normal)
         button.setTitleColor(.darkPink, for: .normal)
-        button.backgroundColor = nil
+        button.setTitleColor(.transparentPink, for: .highlighted)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.darkPink.cgColor
         button.layer.cornerRadius = 6

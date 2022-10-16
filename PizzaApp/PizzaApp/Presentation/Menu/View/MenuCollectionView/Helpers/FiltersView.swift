@@ -19,19 +19,18 @@ class FiltersView: UICollectionReusableView {
         }
     }
     
-    private lazy var segmentedControll: UISegmentedControl = {
+    private lazy var segmentedControll: CustomSegmentedControl = {
         let items = [
             "Pizzas",
             "Burgers",
             "Desserts",
             "Drinks"
         ]
-        let sc = UISegmentedControl(items: items)
-        sc.selectedSegmentTintColor = .transparentPink
-        sc.backgroundColor = .none
-        sc.layer.borderColor = .none
-        sc.layer.cornerRadius = 20
+        let sc = CustomSegmentedControl(items: items)
         sc.selectedSegmentIndex = 0
+        sc.selectedSegmentTintColor = .transparentPink
+        sc.backgroundColor = .clear
+        sc.layer.borderColor = UIColor.clear.cgColor
         sc.translatesAutoresizingMaskIntoConstraints = false
         return sc
     }()
@@ -41,6 +40,13 @@ class FiltersView: UICollectionReusableView {
         backgroundColor = .white
         segmentedControll.addTarget(self, action: #selector(valueChanged(_: )), for: .valueChanged)
         makeConstrains()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+//        segmentedControll.layer.cornerRadius = 20
+//        segmentedControll.subviews[2].backgroundColor = .clear
+        
     }
     
     required init?(coder: NSCoder) {
@@ -57,7 +63,7 @@ class FiltersView: UICollectionReusableView {
             segmentedControll.leadingAnchor.constraint(equalTo: leadingAnchor),
             segmentedControll.trailingAnchor.constraint(equalTo: trailingAnchor),
             segmentedControll.topAnchor.constraint(equalTo: topAnchor),
-            segmentedControll.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            segmentedControll.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1)
             
         ])
     }

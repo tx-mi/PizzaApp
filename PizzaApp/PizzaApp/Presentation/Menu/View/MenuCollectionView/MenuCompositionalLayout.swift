@@ -50,7 +50,7 @@ extension MenuCollectionView {
         let section = NSCollectionLayoutSection(group: group)
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: .init(widthDimension: .fractionalWidth(1.0),
-                              heightDimension: .fractionalHeight(0.07)),
+                              heightDimension: .fractionalHeight(0.05)),
             elementKind: FiltersView.kind,
             alignment: .top
         )

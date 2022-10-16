@@ -10,6 +10,7 @@
 		C54402D928FAD5E7001A8D2A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54402D828FAD5E7001A8D2A /* NetworkService.swift */; };
 		C54402DB28FADA5F001A8D2A /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54402DA28FADA5F001A8D2A /* ProductModel.swift */; };
 		C54402DD28FADB1B001A8D2A /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54402DC28FADB1B001A8D2A /* NetworkDataFetch.swift */; };
+		C54FA3ED28FCA06C0097E894 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54FA3EC28FCA06C0097E894 /* CustomSegmentedControl.swift */; };
 		C55902B828F8BA8E003ABD6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55902B728F8BA8E003ABD6E /* AppDelegate.swift */; };
 		C55902BA28F8BA8E003ABD6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55902B928F8BA8E003ABD6E /* SceneDelegate.swift */; };
 		C55902BC28F8BA8E003ABD6E /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55902BB28F8BA8E003ABD6E /* MenuVC.swift */; };
@@ -33,6 +34,7 @@
 		C54402D828FAD5E7001A8D2A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C54402DA28FADA5F001A8D2A /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		C54402DC28FADB1B001A8D2A /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
+		C54FA3EC28FCA06C0097E894 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		C55902B428F8BA8E003ABD6E /* PizzaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55902B728F8BA8E003ABD6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C55902B928F8BA8E003ABD6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				C5FFFA0828F9D3BF009C1793 /* FiltersView.swift */,
+				C54FA3EC28FCA06C0097E894 /* CustomSegmentedControl.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				C5FFFA0428F980EB009C1793 /* UIView+Ext.swift in Sources */,
 				C5FFFA0928F9D3BF009C1793 /* FiltersView.swift in Sources */,
 				C5FFFA0028F96F21009C1793 /* ProductCell.swift in Sources */,
+				C54FA3ED28FCA06C0097E894 /* CustomSegmentedControl.swift in Sources */,
 				C54402D928FAD5E7001A8D2A /* NetworkService.swift in Sources */,
 				C55902BA28F8BA8E003ABD6E /* SceneDelegate.swift in Sources */,
 			);
