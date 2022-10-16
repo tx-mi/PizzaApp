@@ -20,7 +20,7 @@ extension MenuCollectionView {
             }
         }
     }
-   
+    
     static func createBannerLayout() -> NSCollectionLayoutSection? {
         let item = NSCollectionLayoutItem(
             layoutSize: .init(widthDimension: .fractionalWidth(1.0),
@@ -33,6 +33,7 @@ extension MenuCollectionView {
             subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets.top = 16
+        section.contentInsets.bottom = 16
         section.orthogonalScrollingBehavior = .groupPaging
         return section
     }
@@ -47,18 +48,16 @@ extension MenuCollectionView {
                               heightDimension: .fractionalHeight(0.25)),
             subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        if sectionIndex == 1 {
-            let header = NSCollectionLayoutBoundarySupplementaryItem(
-                layoutSize: .init(widthDimension: .fractionalWidth(1.0),
-                                  heightDimension: .fractionalHeight(0.07)),
-                elementKind: FiltersView.kind,
-                alignment: .top
-            )
-            header.pinToVisibleBounds = true
-            section.boundarySupplementaryItems = [
-                header
-            ]
-        }
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: .init(widthDimension: .fractionalWidth(1.0),
+                              heightDimension: .fractionalHeight(0.07)),
+            elementKind: FiltersView.kind,
+            alignment: .top
+        )
+        header.pinToVisibleBounds = true
+        section.boundarySupplementaryItems = [
+            header
+        ]
         section.orthogonalScrollingBehavior = .none
         return section
     }

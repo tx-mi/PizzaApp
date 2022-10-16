@@ -14,6 +14,7 @@ protocol MenuViewModelProtocol {
     func countProducts() -> Int
     func getAllProducts()
     func getProduct(at indexPath: IndexPath) -> Product?
+    func getIndexPath(from segmentIndex: Int) -> IndexPath
 }
 
 final class MenuViewModel: MenuViewModelProtocol {
@@ -28,7 +29,7 @@ final class MenuViewModel: MenuViewModelProtocol {
     
     private let network: NetworkDataFetchProtocol
     private(set) var navController: UINavigationController?
-
+    
     func countProducts() -> Int {
         return products.reduce(0){ $0 + $1.value.count }
     }
@@ -58,6 +59,14 @@ final class MenuViewModel: MenuViewModelProtocol {
             lengthBefore += currentLength
         }
         return products[0]?.first
+    }
+    
+    func getIndexPath(from segmentIndex: Int) -> IndexPath {
+        var indexItem = 0
+        for i in 0..<segmentIndex {
+            indexItem += products[i]?.count ?? 0
+        }
+        return IndexPath(item: indexItem, section: 1)
     }
     
 }

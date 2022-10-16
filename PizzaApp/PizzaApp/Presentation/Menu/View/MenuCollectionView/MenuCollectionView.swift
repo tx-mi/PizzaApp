@@ -117,7 +117,7 @@ private extension MenuCollectionView {
         cell.backgroundColor = .white
         
         guard
-            let product = viewModel.products[0]?.first // TODO: Get correct product
+            let product = viewModel.getProduct(at: indexPath) // TODO: Get correct product
         else { return cell }
         cell.configure(product: product)
         return cell
@@ -129,13 +129,14 @@ private extension MenuCollectionView {
             withReuseIdentifier: FiltersView.id,
             for: indexPath
         ) as? FiltersView else { return UICollectionReusableView() }
-        // TODO: get correct indexes for scroll
-        view.didUpdateSegment = { [weak self] segment in
-            let indexToScroll = IndexPath(item: 0, section: Constants.sectionOfProducts)
-            self?.scrollToItem(at: indexToScroll,
-                               at: .top,
-                               animated: true)
+        
+        view.didUpdateSegment = { [weak self] segmentIndex in
+            guard let self else { return }
+            self.scrollToItem(at: self.viewModel.getIndexPath(from: segmentIndex),
+                              at: .top,
+                              animated: true)
         }
+        
         return view
     }
     
