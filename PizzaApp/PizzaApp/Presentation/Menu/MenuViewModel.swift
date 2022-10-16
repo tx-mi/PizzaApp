@@ -13,6 +13,7 @@ protocol MenuViewModelProtocol {
     var didUpdatesProducts: (((Products)) -> Void)? { get set }
     func countProducts() -> Int
     func getAllProducts()
+    func getProduct(at indexPath: IndexPath) -> Product?
 }
 
 final class MenuViewModel: MenuViewModelProtocol {
@@ -45,6 +46,18 @@ final class MenuViewModel: MenuViewModelProtocol {
             self.products = products
             
         }
+    }
+    
+    func getProduct(at indexPath: IndexPath) -> Product? {
+        var lengthBefore = 0
+        for i in 0...3 {
+            let currentLength = products[i]?.count ?? 0
+            if lengthBefore + currentLength > indexPath.row {
+                return products[i]?[indexPath.row - lengthBefore]
+            }
+            lengthBefore += currentLength
+        }
+        return products[0]?.first
     }
     
 }
