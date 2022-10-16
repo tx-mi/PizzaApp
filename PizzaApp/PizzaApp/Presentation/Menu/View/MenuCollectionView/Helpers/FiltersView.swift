@@ -15,7 +15,12 @@ class FiltersView: UICollectionReusableView {
     var didUpdateSegment: ((Int) -> Void)?
     
     private lazy var segmentedControll: UISegmentedControl = {
-        let items = ["Pizzas", "Burgers", "Combo", "Water"]
+        let items = [
+            "Pizzas",
+            "Burgers",
+            "Desserts",
+            "Drinks"
+        ]
         let sc = UISegmentedControl(items: items)
         sc.selectedSegmentTintColor = .transparentPink
         sc.backgroundColor = .none
@@ -37,10 +42,6 @@ class FiltersView: UICollectionReusableView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
     }
     
     @objc private func valueChanged(_ sender: UISegmentedControl) {

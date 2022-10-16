@@ -6,10 +6,21 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProductCell: UICollectionViewCell {
     
     static let reuseID = "ProductCellID"
+    
+    var photoUrl: String? {
+            didSet {
+                guard let imageUrl = photoUrl,
+                      let url = URL(string: imageUrl)
+                else { return }
+                foodImageView.sd_setImage(with: url,
+                                          placeholderImage: UIImage(systemName: "questionmark.app"))
+            }
+        }
     
     private lazy var foodImageView: UIImageView = {
         let imageView = UIImageView()
@@ -21,7 +32,6 @@ class ProductCell: UICollectionViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Баварские Колбаски"
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.numberOfLines = 1
@@ -31,7 +41,6 @@ class ProductCell: UICollectionViewCell {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Баварски колбаски,ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус"
         label.textColor = .lightGray
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 12)
@@ -107,19 +116,8 @@ class ProductCell: UICollectionViewCell {
 extension ProductCell {
     
     func configure(product: Product) {
-        self.nameLabel.text = product.name
         self.descriptionLabel.text = product.dsc
-        guard let url = URL(string: product.img) else { return }
-        
-        DispatchQueue.global().async {
-            if let data = try? Data(contentsOf: url) {
-                DispatchQueue.main.async {
-                    if let image = UIImage(data: data) {
-                        self.foodImageView.image = image
-                    }
-                }
-            }
-        }
-        
+        self.nameLabel.text = product.name
+        self.photoUrl = product.img
     }
 }
