@@ -76,7 +76,6 @@
 				6BBD737E06716B705507EACD /* Pods-PizzaApp.debug.xcconfig */,
 				0B61E7A6359B79F36A9A468A /* Pods-PizzaApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

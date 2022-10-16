@@ -14,6 +14,10 @@ final class MenuCollectionView: UICollectionView {
         static let numberOfBanners: Int = 2
     }
     
+    var shouldUpdateSegment: ((Int) -> Void)?
+    
+    private var isScrolling = false
+    
     private var viewModel: MenuViewModelProtocol
     
     init(frame: CGRect, viewModel: MenuViewModelProtocol) {
@@ -88,6 +92,20 @@ extension MenuCollectionView: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard isScrolling == false,
+              indexPath.section == Constants.sectionOfProducts
+        else { return }
+        for i in 0...3 {
+            if viewModel.getIndexPath(from: i) == indexPath {
+                shouldUpdateSegment?(i)
+            }
+        }
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        isScrolling = false
+    }
     
 }
 
@@ -132,9 +150,14 @@ private extension MenuCollectionView {
         
         view.didUpdateSegment = { [weak self] segmentIndex in
             guard let self else { return }
+            self.isScrolling = true
             self.scrollToItem(at: self.viewModel.getIndexPath(from: segmentIndex),
                               at: .top,
                               animated: true)
+        }
+        
+        shouldUpdateSegment = { index in
+            view.selectedIndex = index
         }
         
         return view

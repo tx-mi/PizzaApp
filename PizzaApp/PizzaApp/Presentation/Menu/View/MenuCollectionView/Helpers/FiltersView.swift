@@ -13,6 +13,11 @@ class FiltersView: UICollectionReusableView {
     static let kind = "Filters"
     
     var didUpdateSegment: ((Int) -> Void)?
+    var selectedIndex: Int = 0 {
+        didSet {
+            segmentedControll.selectedSegmentIndex = selectedIndex
+        }
+    }
     
     private lazy var segmentedControll: UISegmentedControl = {
         let items = [
@@ -30,8 +35,6 @@ class FiltersView: UICollectionReusableView {
         sc.translatesAutoresizingMaskIntoConstraints = false
         return sc
     }()
-    
-    let wow = "wow"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
